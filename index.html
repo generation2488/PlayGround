@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#080b1b">
+  <title>Neon Fortune — Slot Arcade</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Neon Fortune home">
+        <span class="brand-mark"><span>✦</span></span>
+        <span class="brand-name">NEON<span>FORTUNE</span></span>
+      </a>
+      <div class="top-note"><span class="live-dot"></span> ARCADE MODE <i>•</i> JUST FOR FUN</div>
+      <div class="wallet"><span class="wallet-icon">◈</span><div><small>YOUR CREDITS</small><strong id="balance">1,000</strong></div><span class="wallet-coin">✦</span></div>
+    </header>
+
+    <section class="intro">
+      <div class="eyebrow"><span class="eyebrow-line"></span> THE LUCKY LANTERN <span class="eyebrow-line"></span></div>
+      <h1>Chase the <span>glow.</span></h1>
+      <p>Spin for a little sparkle. <b>No cash, just good vibes.</b></p>
+    </section>
+
+    <section class="machine-wrap" aria-label="Slot machine">
+      <div class="machine-topline"><div class="jackpot-label"><span class="jackpot-star">✦</span> TONIGHT'S JACKPOT <span class="jackpot-star">✦</span></div><div class="machine-status"><span class="status-pip"></span><span id="statusText">READY TO SPIN</span></div></div>
+      <div class="cabinet">
+        <div class="cabinet-side left-side"></div><div class="cabinet-side right-side"></div>
+        <div class="cabinet-inner">
+          <div class="marquee"><span class="marquee-star">✦</span><span class="marquee-title">LUCKY <b>LANTERN</b></span><span class="marquee-star">✦</span></div>
+          <div class="reel-frame">
+            <div class="reel-glow"></div>
+            <div class="reels" id="reels" aria-label="Slot machine reels">
+              <div class="reel" data-reel="0"><div class="symbol">🍒</div><div class="symbol">💎</div><div class="symbol">🍀</div></div>
+              <div class="reel" data-reel="1"><div class="symbol">🍀</div><div class="symbol">🔔</div><div class="symbol">🍒</div></div>
+              <div class="reel" data-reel="2"><div class="symbol">🔔</div><div class="symbol">🍒</div><div class="symbol">💎</div></div>
+              <div class="reel" data-reel="3"><div class="symbol">💎</div><div class="symbol">🍀</div><div class="symbol">🔔</div></div>
+              <div class="reel" data-reel="4"><div class="symbol">🍒</div><div class="symbol">💎</div><div class="symbol">🍀</div></div>
+            </div>
+            <div class="payline-indicator left"></div><div class="payline-indicator right"></div>
+          </div>
+          <div class="machine-foot"><span>5 REELS</span><i></i><span>3 ROWS</span><i></i><span>5 LUCKY LINES</span></div>
+          <div class="controls">
+            <div class="bet-control">
+              <span class="control-label">YOUR BET</span>
+              <div class="bet-stepper"><button id="betDown" aria-label="Decrease bet">−</button><strong id="betAmount">25</strong><button id="betUp" aria-label="Increase bet">+</button></div>
+              <span class="bet-caption">CREDITS / SPIN</span>
+            </div>
+            <div class="spin-zone">
+              <button id="spinButton" class="spin-button" aria-label="Spin the reels"><span class="spin-shine"></span><span class="spin-icon">↻</span><span>SPIN</span><small id="spinHint">GOOD LUCK!</small></button>
+              <button id="autoButton" class="auto-button" aria-label="Start auto spin"><span class="auto-icon">⟳</span> AUTO <span class="auto-count">10</span></button>
+            </div>
+            <div class="win-display"><span class="control-label">LAST WIN</span><strong id="lastWin">—</strong><span class="win-caption" id="winCaption">LET'S LIGHT IT UP</span></div>
+          </div>
+          <div class="cabinet-bottom"><span class="bottom-bulb">✦</span><span>EVERY SPIN IS A NEW STORY</span><span class="bottom-bulb">✦</span></div>
+        </div>
+      </div>
+      <div class="cabinet-base"></div>
+    </section>
+
+    <section class="below-machine">
+      <div class="game-message" id="gameMessage"><span class="message-sparkle">✧</span><span id="messageText">Your next big moment is one spin away.</span><span class="message-sparkle">✧</span><button class="refill-button" id="refillButton" hidden>FREE REFILL +500</button></div>
+      <div class="info-row">
+        <div class="info-card how-card"><div class="card-icon">◎</div><div><h3>HOW TO PLAY</h3><p>Set your bet, hit spin, and line up matching symbols from the left. Three lanterns unlock <b>8 FREE SPINS!</b></p></div></div>
+        <button class="info-card paytable-card" id="paytableOpen"><div class="card-icon">✧</div><div><h3>SYMBOL PAYTABLE</h3><p>See what the lucky symbols are worth.</p></div><span class="card-arrow">↗</span></button>
+      </div>
+      <p class="responsible-note"><span>ⓘ</span> PLAY CREDITS ONLY · NO PURCHASES · NO CASH VALUE · TAKE A BREAK ANYTIME</p>
+    </section>
+    <footer><span>NEON FORTUNE ARCADE</span><span>MADE FOR THE MOMENT <b>✦</b></span></footer>
+  </main>
+
+  <div class="modal-backdrop" id="paytableModal" aria-hidden="true">
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="paytableTitle">
+      <button class="modal-close" id="paytableClose" aria-label="Close paytable">×</button>
+      <div class="modal-eyebrow">A LITTLE LUCK GOES A LONG WAY</div><h2 id="paytableTitle">Symbol <span>paytable</span></h2>
+      <p class="modal-intro">Line payouts use 1/5 of your total bet. Match from the left on any lucky line.</p>
+      <div class="paytable-list">
+        <div class="paytable-row"><span class="pay-symbol">🏮</span><strong>Lucky lantern</strong><span class="payout">5× <small>3 · 15× 4 · 50× 5</small></span></div>
+        <div class="paytable-row"><span class="pay-symbol">💎</span><strong>Neon gem</strong><span class="payout">4× <small>3 · 12× 4 · 35× 5</small></span></div>
+        <div class="paytable-row"><span class="pay-symbol">🔔</span><strong>Golden bell</strong><span class="payout">3× <small>3 · 8× 4 · 20× 5</small></span></div>
+        <div class="paytable-row"><span class="pay-symbol">🍀</span><strong>Lucky clover</strong><span class="payout">2× <small>3 · 6× 4 · 15× 5</small></span></div>
+        <div class="paytable-row"><span class="pay-symbol">🍒</span><strong>Cherry pop</strong><span class="payout">1× <small>3 · 3× 4 · 8× 5</small></span></div>
+      </div>
+      <div class="bonus-note"><span>🏮</span><p><b>3 or more lanterns anywhere</b> trigger 8 free spins. Free spin wins get a 2× boost!</p></div>
+      <button class="modal-done" id="paytableDone">GOT IT <span>✦</span></button>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
